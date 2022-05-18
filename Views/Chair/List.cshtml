@@ -13,12 +13,15 @@
     @{ 
         foreach (var item in Model)
         {
-            <li> 
-                Name: @item.Name 
-                Desc: @item.Desc
-                Category: @item.Category.Name
-                Price: @item.Price
-            </li>
+        <li>
+            <p>Name: @item.Name </p>
+            <p>Desc: @item.Desc</p>
+            <p>Category: @item.Category.Name</p>
+            <p>Price: @item.Price</p>
+            <p>IMG: @item.Img</p>
+            <p></p>
+
+        </li>
         }
     }
 </ul>
