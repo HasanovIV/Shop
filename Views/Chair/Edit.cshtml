@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Shop.Models.Chair
+@{
+    ViewBag.Title = "Редактирование пользователя";
+}
+<form asp-action="Edit" asp-controller="Chair" asp-route-id="@Model.Id">
+    <div>
+        <label asp-for="Name">Имя</label>
+        <input type="text" asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Desc">Описание</label>
+        <input type="text" asp-for="Desc" />
+    </div>
+    <div>
+        <label asp-for="Price">Описание</label>
+        <input type="number" asp-for="Price" />
+    </div>
+    <div>
+        <label asp-for="IsFavourite">Популярное</label>
+        <input type="checkbox" asp-for="IsFavourite" />
+    </div>
+    <div>
+        <label asp-for="Img">Img</label>
+        <input type="text" asp-for="Img" />
+    </div>
+    <div>
+        <label asp-for="CategoryId">CategoryId</label>
+        <input type="number" asp-for="CategoryId" />
+    </div>
+    <div>
+        <label asp-for="Category.Name">Category.Name</label>
+        <input type="text" asp-for="Category.Name" />
+    </div>
+
+    <div>
+        <input type="submit" value="Сохранить" />
+    </div>
+</form>

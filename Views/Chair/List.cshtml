@@ -14,7 +14,15 @@
         foreach (var item in Model)
         {
         <li>
-            <p>Name: @item.Name </p>
+            <p>Name: @item.Name
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-controller="Chair" asp-route-id="@item.Id">Подробнее</a> |
+                        <a asp-action="Edit" asp-controller="Chair" asp-route-id="@item.Id">Изменить</a> |
+                        <a asp-action="Delete" asp-controller="Chair" asp-route-id="@item.Id">Удалить</a>
+                    </td>
+                </tr>
+                </p>
             <p>Desc: @item.Desc</p>
             <p>Category: @item.Category.Name</p>
             <p>Price: @item.Price</p>
