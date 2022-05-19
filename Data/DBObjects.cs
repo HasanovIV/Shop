@@ -15,11 +15,13 @@ namespace Shop.Data
             if (!content.Categories.Any())
             {
                 content.Categories.AddRange(Categories().Select(cat => cat.Value));
+                content.SaveChanges();
             }
 
             if (!content.Chairs.Any())
             {
                 content.AddRange(Chairs().Select(ch => ch.Value));
+                content.SaveChanges();
             }
 
         }
