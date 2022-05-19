@@ -86,5 +86,10 @@ namespace Shop.Data
 
             return chairDic;
         }
+    
+        public static IEnumerable<Category> ListCategories(AppDBContent content)
+        {
+            return content.Categories;
+        }
     }
 }

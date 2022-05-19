@@ -43,17 +43,20 @@ namespace Shop.Controllers
         {
             if (id != null)
             {
-                Chair chair = db.Chairs.FirstOrDefault(ch => ch.Id == id);
-                if (chair != null)
-                    return View(chair);
+                ChairCard chairCard = new ChairCard(db, (int)id);
+                
+                if (chairCard.chair != null)
+                    return View(chairCard);
             }
             return NotFound();
         }
         [HttpPost]
-        public IActionResult Edit(Chair chair)
+        public IActionResult Edit(ChairCard chairCard)
         {
-            db.Chairs.Update(chair);
-            db.SaveChanges();
+            
+            //chairCard.chair.CategoryId = chairCard.chair.Category.Id;
+            //db.Chairs.Update(chairCard.chair);
+            //db.SaveChanges();
             return RedirectToAction("List");
         }
     }

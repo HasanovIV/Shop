@@ -1,41 +1,56 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model Shop.Models.Chair
+@model Shop.Data.ChairCard
 @{
     ViewBag.Title = "Редактирование карточки стула";
 }
-<form asp-action="Edit" asp-controller="Chair" asp-route-id="@Model.Id">
+@using Shop.Data
+<form asp-action="Edit" asp-controller="Chair" asp-route-id="@Model.chair.Id">
     <div>
-        <label asp-for="Name">Имя</label>
-        <input type="text" asp-for="Name" />
+        <label asp-for="chair.Name">Имя</label>
+        <input type="text" asp-for="chair.Name" />
     </div>
     <div>
-        <label asp-for="Desc">Описание</label>
-        <input type="text" asp-for="Desc" />
+        <label asp-for="chair.Desc">Описание</label>
+        <input type="text" asp-for="chair.Desc" />
     </div>
     <div>
-        <label asp-for="Price">Описание</label>
-        <input type="number" asp-for="Price" />
+        <label asp-for="chair.Price">Описание</label>
+        <input type="number" asp-for="chair.Price" />
     </div>
     <div>
-        <label asp-for="IsFavourite">Популярное</label>
-        <input type="checkbox" asp-for="IsFavourite" />
+        <label asp-for="chair.IsFavourite">Популярное</label>
+        <input type="checkbox" asp-for="chair.IsFavourite" />
     </div>
     <div>
-        <label asp-for="Img">Img</label>
-        <input type="text" asp-for="Img" />
+        <label asp-for="chair.Img">Img</label>
+        <input type="text" asp-for="chair.Img" />
     </div>
     <div>
-        <label asp-for="CategoryId">CategoryId</label>
-        <input type="number" asp-for="CategoryId" />
+        <label asp-for="chair.Category.Name">Category.Name</label>
+        <input type="text" asp-for="chair.Category.Name" />
     </div>
     <div>
-        <label asp-for="Category.Name">Category.Name</label>
-        <input type="text" asp-for="Category.Name" />
-    </div>
+        <p><input hidden list="categories" asp-for="chair.Category"></p>
+        <select size="1" asp-for="chair.Category">
+            <option disabled>Выберите категорию</option>
+            @foreach (var item in Model.categories)
+            {
+                if (item.Id == Model.chair.Id)
+                {
+                    <option selected value=@item.Id>@item.Name</option>
+                }
+                else
+                {
+                    <option value=@item.Id>@item.Name</option>
+                }
 
-    <div>
-        <input type="submit" value="Сохранить" />
+            }
+
+        </select>
     </div>
+     <div>
+         <input type="submit" value="Сохранить" />
+     </div>
 </form>
