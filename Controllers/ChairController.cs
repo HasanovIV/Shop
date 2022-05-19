@@ -36,19 +36,7 @@ namespace Shop.Controllers
 
         public void SaveChair()
         {
-            //using (UsersCintext db = new UsersCintext())
-            //{
-            //    //User user1 = new User() { Name = "Koctya", FirstName = "Novikov", Gmail = "ivan@gmail.ru" };
-            //    Employee employee1 = new Employee() { Name = "Koctya", FirstName = "Nikiforof", NameOrganisation = "AOA", NumberEmp = 8 };
 
-            //    Employee employee2 = new Employee() { Name = "Koctya", FirstName = "Korolev", NumberEmp = 8 };
-            //    Employee employee3 = new Employee() { Name = "Maxim", FirstName = "Koctrikov", Gmail = "max@gmail.ru", NumberEmp = 4 };
-
-            //    db.AddRange(employee1, employee2, employee3);
-
-            //    db.SaveChanges();
-
-            //}
         }
 
         public IActionResult Edit(int? id)
