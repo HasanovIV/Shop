@@ -1,7 +1,7 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Интернет магазин стульев";
 }
 
 
@@ -11,15 +11,17 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewData["Title"]</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <header>This is Layout</header>
 
     <div>
-        <p><a href="~/Chair/List">Page list chairs</a></p>
-        <p><a href="">Page categories</a></p>
-        <p><a href="">Add new category</a></p>
-        <p><a href="">Add new chair</a></p>
+        <a href="~/Chair/List">List chairs</a>
+        @*<a href="">Page categories</a>*@
+        @*<p><a href="">Add new category</a></p>*@
+        @*<p><a href="">Add new chair</a></p>*@
     </div>
 
     <div>

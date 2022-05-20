@@ -33,3 +33,37 @@
         }
     }
 </ul>
+
+<div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        @{
+            foreach (var item in Model)
+            {
+
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns=@item.Img
+                             role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                             focusable="false">
+                             <rect width="100%" height="100%" fill="#55595c"></rect>
+                        </svg>
+
+                        <div class="card-body">
+                            <p class="card-text">
+                            <p> @item.Name <p />
+                            <p>@item.Desc</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    @*<button type="button" class="btn btn-sm btn-outline-secondary">View</button>*@
+                                    <a asp-action="Edit" asp-controller="Chair" asp-route-id="@item.Id">Изменить</a>
+                                </div>
+                                <small class="text-muted">@item.Price rub</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
