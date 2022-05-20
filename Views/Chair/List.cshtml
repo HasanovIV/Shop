@@ -9,32 +9,7 @@
 
 @model IEnumerable<Chair>
 
-<ul>
-    @{ 
-        foreach (var item in Model)
-        {
-        <li>
-            <p>Name: @item.Name
-                <tr>
-                    <td>
-                        <a asp-action="Details" asp-controller="Chair" asp-route-id="@item.Id">Подробнее</a> |
-                        <a asp-action="Edit" asp-controller="Chair" asp-route-id="@item.Id">Изменить</a> |
-                        <a asp-action="Delete" asp-controller="Chair" asp-route-id="@item.Id">Удалить</a>
-                    </td>
-                </tr>
-                </p>
-            <p>Desc: @item.Desc</p>
-            <p>Category: @item.Category.Name</p>
-            <p>Price: @item.Price</p>
-            <p>IMG: @item.Img</p>
-            <p></p>
-
-        </li>
-        }
-    }
-</ul>
-
-<div class="container">
+<p class="nav-item"><a asp-action="Edit" asp-controller="Chair" class="nav-link">Добавить новый стул</a></p>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         @{
@@ -43,15 +18,11 @@
 
                 <div class="col">
                     <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns=@item.Img
-                             role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                             focusable="false">
-                             <rect width="100%" height="100%" fill="#55595c"></rect>
-                        </svg>
-
+                        <img src="@item.Img" alt="@item.Name" width="225" height="225" class="class="bd-placeholder-img card-img-top"">
                         <div class="card-body">
                             <p class="card-text">
-                            <p> @item.Name <p />
+                            <p><h4> @item.Name </h4> <p />
+                            <p><h6>@item.Category.Name</h6></p>
                             <p>@item.Desc</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
@@ -66,4 +37,3 @@
             }
         }
     </div>
-</div>

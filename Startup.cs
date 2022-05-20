@@ -53,7 +53,7 @@ namespace Shop
 
             app.UseMvc(routes =>
                {
-                   routes.MapRoute(name: "Default", template: "{controller=Chair}/{action=List}");
+                   routes.MapRoute(name: "Default", template: "{controller=Chair}/{action=Index}");
                });
 
             //app.UseMvcWithDefaultRoute();

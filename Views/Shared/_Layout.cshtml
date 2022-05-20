@@ -14,20 +14,20 @@
     <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script src="~/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
-    <header>This is Layout</header>
+<body class="bg-light">
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="~/Chair/Index" class="nav-link active" aria-current="page">Основаная</a></li>
+                <li class="nav-item"><a href="~/Chair/List" class="nav-link">Каталог стульев</a></li>
+            </ul>
+        </header>
 
-    <div>
-        <a href="~/Chair/List">List chairs</a>
-        @*<a href="">Page categories</a>*@
-        @*<p><a href="">Add new category</a></p>*@
-        @*<p><a href="">Add new chair</a></p>*@
+        <div class="row g-5">
+            @RenderBody()
+        </div>
+
     </div>
-
-    <div>
-        @RenderBody()
-    </div>
-
 
 </body>
 </html>

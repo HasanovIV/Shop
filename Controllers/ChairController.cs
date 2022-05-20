@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,10 @@ namespace Shop.Controllers
             db = context;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
         public IActionResult List()
         {
             var chairs = _chairs.Chairs();
@@ -41,23 +46,53 @@ namespace Shop.Controllers
 
         public IActionResult Edit(int? id)
         {
+            var categories = DBObjects.ListCategories(db);
+            List<SelectListItem> mySelectItems = new List<SelectListItem>();
+
             if (id != null)
             {
-                ChairCard chairCard = new ChairCard(db, (int)id);
-                
-                if (chairCard.chair != null)
+                //ChairCard chairCard = new ChairCard(db, (int)id);
+
+                //ViewBag.nameCategories = chairCard.nameCategories;
+
+                //if (chairCard.chair != null)
+                //    return View(chairCard);
+
+                Chair chairCard = db.Chairs.FirstOrDefault(ch => ch.Id == id);
+
+                foreach (var item in categories)
+                {
+                    //if (chairCard.Category.Name != item.Name)
+                        mySelectItems.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
+
+                }
+
+                ViewBag.mySelectItems = mySelectItems;
+
+                if (chairCard != null)
                     return View(chairCard);
+
             }
-            return NotFound();
+
+            foreach (var item in categories)
+                mySelectItems.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
+
+            ViewBag.mySelectItems = mySelectItems;
+            var defaultCategories = db.Categories.FirstOrDefault();
+
+            return View(new Chair() { Category = defaultCategories, CategoryId = defaultCategories.Id }); ;
         }
+
         [HttpPost]
-        public IActionResult Edit(ChairCard chairCard)
+        public IActionResult Edit(Chair chairCard, int chooseCategoryID)
         {
-            
-            //chairCard.chair.CategoryId = chairCard.chair.Category.Id;
-            //db.Chairs.Update(chairCard.chair);
-            //db.SaveChanges();
+
+            chairCard.Category = db.Categories.FirstOrDefault(cat => cat.Id == chooseCategoryID);
+            db.Chairs.Update(chairCard);
+            db.SaveChanges();
+
             return RedirectToAction("List");
         }
+
     }
 }
