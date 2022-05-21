@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "List";
+}
+
+@using Shop.Models
+
+@model List<Category>
+
+<div class="nav nav-pills">
+    <p class="nav-item"><a asp-action="Edit" asp-controller="Category" class="nav-link">Добавить новую категорию</a></p>
+</div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    @{
+        foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">
+                        <p><h4> @item.Name </h4> <p />
+                        <p>@item.Desc</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                @*<button type="button" class="btn btn-sm btn-outline-secondary">View</button>*@
+                                <a asp-action="Edit" asp-controller="Category" asp-route-id="@item.Id">Изменить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

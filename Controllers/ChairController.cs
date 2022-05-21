@@ -34,16 +34,6 @@ namespace Shop.Controllers
             return View(chairs);
         }
 
-        public IActionResult AddChair()
-        {
-            return View();
-        }
-
-        public void SaveChair()
-        {
-
-        }
-
         public IActionResult Edit(int? id)
         {
             var categories = DBObjects.ListCategories(db);
@@ -51,18 +41,11 @@ namespace Shop.Controllers
 
             if (id != null)
             {
-                //ChairCard chairCard = new ChairCard(db, (int)id);
-
-                //ViewBag.nameCategories = chairCard.nameCategories;
-
-                //if (chairCard.chair != null)
-                //    return View(chairCard);
-
                 Chair chairCard = db.Chairs.FirstOrDefault(ch => ch.Id == id);
 
                 foreach (var item in categories)
                 {
-                    //if (chairCard.Category.Name != item.Name)
+                    if (chairCard.CategoryId != item.Id)
                         mySelectItems.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
 
                 }
@@ -86,7 +69,6 @@ namespace Shop.Controllers
         [HttpPost]
         public IActionResult Edit(Chair chairCard, int chooseCategoryID)
         {
-
             chairCard.Category = db.Categories.FirstOrDefault(cat => cat.Id == chooseCategoryID);
             db.Chairs.Update(chairCard);
             db.SaveChanges();

@@ -9,7 +9,9 @@
 
 @model IEnumerable<Chair>
 
-<p class="nav-item"><a asp-action="Edit" asp-controller="Chair" class="nav-link">Добавить новый стул</a></p>
+    <div class="nav nav-pills">
+        <p class="nav-item"><a asp-action="Edit" asp-controller="Chair" class="nav-link">Добавить новый стул</a></p>
+    </div>
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         @{
@@ -18,7 +20,7 @@
 
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="@item.Img" alt="@item.Name" width="225" height="225" class="class="bd-placeholder-img card-img-top"">
+                        <img src="@item.Img" alt="@item.Name" width="225" height="225" class="class=" bd-placeholder-img card-img-top"">
                         <div class="card-body">
                             <p class="card-text">
                             <p><h4> @item.Name </h4> <p />
