@@ -20,6 +20,6 @@ namespace Shop.Data
         public DbSet<CartList> CartLists{ get; set; }
         public DbSet<Order> Orders{ get; set; }
         public DbSet<OrderList> OrderLists { get; set; }
-
+        public DbSet<User> Users { get; set; }
     }
 }

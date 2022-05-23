@@ -12,5 +12,7 @@ namespace Shop.Models
         public string Address { get; set; }
 
         public int Summ { get; set; }
+
+        public List<OrderList> OrderLists { get; set; }
     }
 }

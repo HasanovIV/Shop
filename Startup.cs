@@ -14,6 +14,7 @@ using Shop.Data;
 using Shop.Data.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Shop
 {
@@ -38,6 +39,13 @@ namespace Shop
             services.AddTransient<IChairs, ChairRepository>();
             services.AddTransient<IChairsCategory, CategoryRepository>();
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                });
+            services.AddControllersWithViews();
+
             services.AddDbContext<AppDBContent>(x => x.UseSqlServer("Server=(localdb)\\MSSQLLocalDB; Database=ShopDB; Trusted_Connection=true"));
 
             //services.AddMvc();
@@ -50,6 +58,9 @@ namespace Shop
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+
+            app.UseAuthentication();    // аутентификация
+            app.UseAuthorization();     // авторизация
 
             app.UseMvc(routes =>
                {
