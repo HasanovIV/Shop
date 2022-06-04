@@ -18,6 +18,8 @@ namespace Shop.Controllers
         public AccountController(AppDBContent appDB)
         {
             db = appDB;
+            int[] asa = new int[5];
+            var ff = asa.Clone();
         }
 
         [Authorize]
@@ -94,5 +96,6 @@ namespace Shop.Controllers
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Account");
         }
+
     }
 }

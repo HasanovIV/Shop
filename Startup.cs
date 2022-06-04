@@ -9,7 +9,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Shop.Models;
 using Shop.Interfaces;
-using Shop.Mocks;
 using Shop.Data;
 using Shop.Data.Repository;
 using Microsoft.Extensions.Configuration;
@@ -20,21 +19,8 @@ namespace Shop
 {
     public class Startup
     {
-        //private IConfigurationRoot _confString;
-        //public Startup(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostEnv)
-        //{
-        //    _confString = new ConfigurationBinder().se
-        //}
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddSingleton<IChairs, MockChairs>();
-            //services.AddSingleton<IChairsCategory, MockChairsCategory>();
-
-            //services.AddTransient<IChairs, MockChairs>();
-            //services.AddTransient<IChairsCategory, MockChairsCategory>();
 
             services.AddTransient<IChairs, ChairRepository>();
             services.AddTransient<IChairsCategory, CategoryRepository>();

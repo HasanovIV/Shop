@@ -25,6 +25,11 @@
             </ul>
         </header>
 
+        @if (User.Identity.Name != null)
+        {
+        <h3>Здравствуйте, @User.Identity.Name</h3>
+        }
+
         <div class="row g-5">
             @RenderBody()
         </div>
